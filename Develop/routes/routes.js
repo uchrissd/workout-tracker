@@ -13,6 +13,14 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 });
 
+router.put("/api/workouts/:id", ({ body, params }, res) => {
+  Workout.findByIdAndUpdate(
+    params.id,
+    { $push: { excercises: body } },
+    { new: true, runValidators: true }
+  );
+});
+
 router.get("/api/workouts", (req, res) => {
   Workout.find({})
     .sort({ date: -1 })
