@@ -8,20 +8,15 @@ app.use(require("./routes/routes.js"));
 
 app.use(require("./routes/routes.js"));
 
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "./public/index.html"));
+router.get("/", (req, res) => {
+  res.redirect("./public/index.html");
 });
 
-app.get("/exercise", function(req, res) {
-  res.sendFile(path.join(__dirname, "./public/exercise.html"));
+router.get("/exercise", (req, res) => {
+  res.redirect("exercise.html");
 });
-
-app.get("/stats", function(req, res) {
-  res.sendFile(path.join(__dirname, "./public/stats.html"));
-});
-
-app.listen(PORT, () => {
-  console.log(`Application running on port ${PORT}!`);
+router.get("/stats", (req, res) => {
+  res.redirect("stats.html");
 });
 
 //api routes
