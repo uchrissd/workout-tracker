@@ -8,14 +8,14 @@ app.use(require("./routes/routes.js"));
 
 app.use(require("./routes/routes.js"));
 
-router.get("/", (req, res) => {
+router.get("./", (req, res) => {
   res.redirect("./public/index.html");
 });
 
-router.get("/exercise", (req, res) => {
+router.get("./exercise", (req, res) => {
   res.redirect("exercise.html");
 });
-router.get("/stats", (req, res) => {
+router.get("./stats", (req, res) => {
   res.redirect("stats.html");
 });
 
