@@ -3,6 +3,29 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
+// html routes
+app.use(require("./routes/routes.js"));
+
+app.use(require("./routes/routes.js"));
+
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+app.get("/exercise", function(req, res) {
+  res.sendFile(path.join(__dirname, "./public/exercise.html"));
+});
+
+app.get("/stats", function(req, res) {
+  res.sendFile(path.join(__dirname, "./public/stats.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Application running on port ${PORT}!`);
+});
+
+//api routes
+
 router.post("/api/workouts", ({ body }, res) => {
   Workout.create(body)
     .then(dbWorkout => {
@@ -42,16 +65,5 @@ router.get("/api/workouts/range", (req, res) => {
       res.status(400).json(err);
     });
 });
-
-//put
-// router.post("/api/transaction/bulk", ({ body }, res) => {
-//   Transaction.insertMany(body)
-//     .then(dbTransaction => {
-//       res.json(dbTransaction);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
 
 module.exports = router;
