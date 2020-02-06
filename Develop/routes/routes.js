@@ -4,9 +4,6 @@ const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
 // html routes
-app.use(require("./routes/routes.js"));
-
-app.use(require("./routes/routes.js"));
 
 router.get("./", (req, res) => {
   res.redirect("./public/index.html");
